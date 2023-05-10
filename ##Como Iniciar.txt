@@ -1,0 +1,33 @@
+Site Oficial para baixar o instalador Python (Python.org)
+
+Quando instalar se atentar aos detalhes de instalação como por exemplo:
+
+	• Marcar caixa de Instal launcher for all users
+	• Add Python 3.7 to PATH
+
+Posteriormente instalar com a função MAX_PATH disable.
+	• Disable path length limit
+
+Feito isso estará instalado de forma simples. Agora vamos verificar o CMD para confirmar se a instalação foi realizada. 
+
+	• Py -3 --version
+
+Nesse caso digitei -3 porque foi a versão que instalei na data atual 09/05/2023.
+
+C:\Users\Renato Augusto> py -3 --version
+Python 3.11.3
+
+Depois vamos abrir o Vs Code e caso não tenha instalado a extensão do Python, iremos fazer isso. Vamos buscar a extensão desenvolvida pela Microsoft, provavelmente será a primeira a ser exibida, mas vale sempre a verificação.
+
+Sempre que for solicitado alguma atualização dos pacotes do python, Deverá ser feito, por segurança e para garantir que os programas funcionem conforme o esperado.
+
+DICA VSCODE:
+
+Para abrir arquivos diretamente pelo CDM, basta navegar pelas pastas utilizando o comando cmd. Quando encontrar basta digitar "code ." O VSCODE irá abrir a pasta selecionada.
+
+Para criar um arquivo no VSCODE é simples e basta colocar a extensão .py ao final do nome. 
+
+
+print("Hello World!")
+
+Se tudo ocorreu bem o código acima deve funcionar!
