@@ -1,0 +1,19 @@
+{
+    "nome": "João",
+    "idade": 30,
+    "cidade": "São Paulo",
+    "hobbies": ["futebol", "música", "cozinhar"],
+    "amigos": [
+      {
+        "nome": "Maria",
+        "idade": 28,
+        "cidade": "Rio de Janeiro"
+      },
+      {
+        "nome": "Pedro",
+        "idade": 32,
+        "cidade": "Belo Horizonte"
+      }
+    ]
+  }
+  

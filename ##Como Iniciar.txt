@@ -31,3 +31,13 @@ Para criar um arquivo no VSCODE é simples e basta colocar a extensão .py ao fi
 print("Hello World!")
 
 Se tudo ocorreu bem o código acima deve funcionar!
+
+
+-----------------------------------------------------------------------
+
+DICAS VSCODE:
+
+Ctrl+Shift+K: Deleta a linha, sem precisar seleciona-la. 
+Ctrl+K Ctrl+C: Faz comentários em Blocos
+
+
