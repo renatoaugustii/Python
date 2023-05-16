@@ -30,12 +30,14 @@ def query(conexao,sql):
         print(ex)
     finally:
         print("PROCEDIMENTO COM SUCESSO!")  
-        #conexao.close()      
+        conexao.close()      
 
 def consultar(conexao,sql):
+    vcon = ConexaoBanco()
     c=conexao.cursor()
     c.execute(sql)
     res = c.fetchall()
+    conexao.close()   
     return res
 
 def menuPrincipal():
@@ -43,7 +45,7 @@ def menuPrincipal():
     print("1 - Inserir Novo Registro")
     print("2 - Deletar Registro")
     print("3 - Atualizar Registro")
-    print("4 - Consultar Registro por ID")
+    print("4 - Consultar Registros ")
     print("5 - Consultar Registro por Nome")
     print("6 - Sair")
 
@@ -54,7 +56,7 @@ def menuInserir():
     vEmail=input("Digite o e-mail: ")
     vsql="INSERT INTO tb_contatos(T_NOMECONTATO, T_TELEFONECONTATO, T_EMAILCONTATO) VALUES('{}','{}','{}')".format(vnome, vTelefone, vEmail)
     query(vcon,vsql)
-    vcon.close()
+    #vcon.close()
     os.system('pause')
 
 def menuDeletar():
@@ -62,7 +64,7 @@ def menuDeletar():
     vid=input("Digite o ID do registo que deseja deletar: ")
     vsql="DELETE FROM tb_contatos WHERE N_IDCONTATO={}".format(vid)
     query(vcon,vsql)
-    vcon.close()
+    #vcon.close()
 
 def menuAtualizar():
     limpaTela()
@@ -85,13 +87,42 @@ def menuAtualizar():
 
     vsql="UPDATE tb_contatos SET T_NOMECONTATO='{}', T_TELEFONECONTATO='{}', T_EMAILCONTATO='{}' WHERE  N_IDCONTATO={}".format(vnome, vTelefone, vEmail,vid)
     query(vcon,vsql)
-    vcon.close()
+    #vcon.close()
     
-def menuConsultarID():
-    print("")
+def menuConsultar():
+    limpaTela()
+    vsql = "SELECT * FROM tb_contatos"
+    res=consultar(vcon,vsql)
+    #vcon.close()
+    vlim=5
+    vcont=0
+    for r in res:
+        print("ID:{0:<3} Nome:{1:<30} Telefone:{2:<14} E-mail:{3:<30}".format(r[0],r[1],r[2],r[3]))
+        vcont+=1
+        if(vcont>=vlim):
+            vcont = 0 
+            os.system('pause')
+            limpaTela
+    print("Fim da Lista")    
+    os.system('pause')
 
 def menuConsultarNomes():
-    print("")
+    limpaTela()
+    vnome=input("Digite o nome: ")
+    vsql = "SELECT * FROM tb_contatos WHERE T_NOMECONTATO LIKE '%{}%'".format(vnome)
+    res= consultar(vcon,vsql)
+    #vcon.close()
+    vlim=5
+    vcont=0
+    for r in res:
+        print("ID:{0:<3} Nome:{1:<30} Telefone:{2:<14} E-mail:{3:<30}".format(r[0],r[1],r[2],r[3]))
+        vcont+=1
+        if(vcont>=vlim):
+            vcont = 0 
+            os.system('pause')
+            limpaTela
+    print("Fim da Lista")    
+    os.system('pause')
 
 
 opc = 0
@@ -99,15 +130,21 @@ opc = 0
 while   opc != 6: 
     menuPrincipal()
     opc = int(input("Digite uma opção: "))
+
     if opc==1:
+        vcon = ConexaoBanco()
         menuInserir()
     elif opc==2:
         menuDeletar()
+        vcon = ConexaoBanco()
     elif opc==3:
+        vcon = ConexaoBanco()
         menuAtualizar()
-    elif opc==4:     
-        menuConsultarID()
-    elif opc==5:     
+    elif opc==4:    
+        vcon = ConexaoBanco() 
+        menuConsultar()
+    elif opc==5:  
+        vcon = ConexaoBanco()   
         menuConsultarNomes() 
     elif opc==6:
         os.system('cls')
